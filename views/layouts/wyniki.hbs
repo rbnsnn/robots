@@ -3,10 +3,19 @@
         <div class="col-md-12">
             <button class="btn btn-primary btn-lg" name="foo" value="upvote">Generuj</button>
         </div>
-        <input type="number" id="amount" name="amount" class="form-control w-25 mt-2"
-            placeholder="Liczba generowanych rekordów" value="test">
+        <input type="number" id="amount" name="amount" class="form-control w-25 mt-3" placeholder="Liczba rekordów">
     </div>
 </form>
+
+{{#if emptyRecords}}
+<div class="row d-flex justify-content-center text-center">
+    <div class="col-md-12">
+        <div class="error-template">
+            <h1 class="text-danger">Brak rekordów w bazie danych!</h1>
+        </div>
+    </div>
+</div>
+{{/if}}
 
 {{#if dataError}}
 <div class="row d-flex justify-content-center text-center mb-5">
@@ -18,6 +27,8 @@
 </div>
 {{/if}}
 
+
+
 {{#if data}}
 <div class="container container-lg">
     <table class="table">
@@ -25,18 +36,24 @@
             <th scope="col">ID</th>
             <th scope="col">Czas produkcji</th>
             <th scope="col">Ilość części</th>
+            <th scope="col">Efektywność</th>
 
         </thead>
         <tbody>
             {{#each data}}
             <tr>
 
-                <th scope="row">{{this._id}}</th>
+                <th scope="row">{{this.id}}</th>
                 <td>{{this.productionTime}}</td>
                 <td>{{this.producedParts}}</td>
+                <td>{{this.effectivity}}</td>
             </tr>
             {{/each}}
         </tbody>
     </table>
 </div>
 {{/if}}
+
+{{#each mostEffective}}
+{{this.id}}
+{{/each}}

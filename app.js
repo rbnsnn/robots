@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 
 const mongoose = require('mongoose')
+const Config = require('./models/Config');
 
 const indexRouter = require('./routes/index');
 const wynikiRouter = require('./routes/wyniki')
@@ -11,7 +12,7 @@ const wynikiRouter = require('./routes/wyniki')
 const app = express();
 
 // view engine setup
-const handlebars = require('express-handlebars')
+const handlebars = require('express-handlebars');
 const hbs = handlebars.create({
     extname: 'hbs',
     layoutsDir: `${__dirname}/views`,
@@ -30,6 +31,11 @@ const database = 'roboty';
 const connectDB = async () => {
     try {
         await mongoose.connect(`mongodb://${server}/${database}`)
+        const isCollectionEmpty = await mongoose.connection.db.collection('configs').estimatedDocumentCount()
+        if (!isCollectionEmpty) {
+            const configData = new Config()
+            await configData.save()
+        }
     } catch (err) {
         console.log('Failed to connect MongoDB')
     }
