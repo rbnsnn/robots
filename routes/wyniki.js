@@ -18,7 +18,7 @@ router.get('/', async (req, res) => {
 
 router.post('/generuj', async (req, res) => {
 
-    if (req.body.amount > 0 && req.body.amount <= 100) {
+    if (req.body.amount > 0 && req.body.amount <= 10) {
         const isCollectionEmpty = await mongoose.connection.db.collection('forms').estimatedDocumentCount()
 
         if (isCollectionEmpty) {

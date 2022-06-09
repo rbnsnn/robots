@@ -43,10 +43,10 @@
             {{#each data}}
             <tr>
 
-                <th scope="row">{{this.id}}</th>
-                <td>{{this.productionTime}}</td>
-                <td>{{this.producedParts}}</td>
-                <td>{{this.effectivity}}</td>
+                <th scope="row" class="robot-id">{{this.id}}</th>
+                <td class="production-time">{{this.productionTime}}</td>
+                <td class="produced-parts">{{this.producedParts}}</td>
+                <td class="effectivity">{{this.effectivity}}</td>
             </tr>
             {{/each}}
         </tbody>
@@ -57,3 +57,7 @@
 {{#each mostEffective}}
 {{this.id}}
 {{/each}}
+<div>
+    <canvas id="pieChart" style="margin: 20px auto; width:100%; max-width:600px"></canvas>
+    <canvas id="barChart" style="margin: 40px auto; width:100%; max-width:600px"></canvas>
+</div>
