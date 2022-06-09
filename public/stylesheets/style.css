@@ -1,0 +1,13 @@
+body {
+  height: 100vh;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.vertical-center {
+  min-height: 50%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 50vh; /* These two lines are counted as one :-)       */
+  max-width: 100vw;
+
+  display: flex;
+  align-items: center;
+}

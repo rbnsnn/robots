@@ -1,0 +1,42 @@
+<form action="/wyniki/generuj" method="post">
+    <div class="row d-flex justify-content-center mx-auto text-center mt-5 mb-5 w-50">
+        <div class="col-md-12">
+            <button class="btn btn-primary btn-lg" name="foo" value="upvote">Generuj</button>
+        </div>
+        <input type="number" id="amount" name="amount" class="form-control w-25 mt-2"
+            placeholder="Liczba generowanych rekordów" value="test">
+    </div>
+</form>
+
+{{#if dataError}}
+<div class="row d-flex justify-content-center text-center mb-5">
+    <div class="col-md-12">
+        <div class="error-template">
+            <h1 class="text-danger">Podano złą wartość!</h1>
+        </div>
+    </div>
+</div>
+{{/if}}
+
+{{#if data}}
+<div class="container container-lg">
+    <table class="table">
+        <thead class="table-dark">
+            <th scope="col">ID</th>
+            <th scope="col">Czas produkcji</th>
+            <th scope="col">Ilość części</th>
+
+        </thead>
+        <tbody>
+            {{#each data}}
+            <tr>
+
+                <th scope="row">{{this._id}}</th>
+                <td>{{this.productionTime}}</td>
+                <td>{{this.producedParts}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+{{/if}}
