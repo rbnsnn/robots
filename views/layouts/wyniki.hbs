@@ -53,9 +53,11 @@
 
 {{#each mostEffective}}
 <div class="container container-lg text-center mt-5 mb-5">
-    <h2>Najbardziej efektywny jest robot o <b>ID:{{this.id}}</b></h1>
+    <h2>Najbardziej efektywny jest robot o <b>ID: {{this.id}}</b></h1>
 </div>
 {{/each}}
+
+{{#if data}}
 <div class="row container container-lg mx-auto">
     <div class="col-lg-6">
         <canvas id="pieChart"></canvas>
@@ -64,5 +66,6 @@
         <canvas id="barChart"></canvas>
     </div>
 </div>
+{{/if}}
 <script src="http://localhost:3000/javascripts/sort.js"></script>
 <script src="http://localhost:3000/javascripts/chart.js"></script>
