@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const Form = require('../models/Form')
-const Config = require('../models/Config')
+const Robots = require('../models/Robots')
 const mongoose = require('mongoose')
 
 
 
 router.get('/', async (req, res) => {
     const isCollectionEmpty = await mongoose.connection.db.collection('forms').estimatedDocumentCount()
-    const config = { productionTimeMax, productionTimeMin, producedPartsMax, producedPartsMin } = await Config.findOne({}).lean()
+    const config = { productionTimeMax, productionTimeMin, producedPartsMax, producedPartsMin } = await Robots.findOne({}).lean()
 
     if (isCollectionEmpty) {
         const data = await Form.find({}).lean()
@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
     const isCollectionEmpty = await mongoose.connection.db.collection('forms').estimatedDocumentCount()
-    const config = { productionTimeMax, productionTimeMin, producedPartsMax, producedPartsMin } = await Config.findOne({}).lean()
+    const config = { productionTimeMax, productionTimeMin, producedPartsMax, producedPartsMin } = await Robots.findOne({}).lean()
 
     if (isCollectionEmpty) {
         const data = await Form.find({}).lean()
@@ -34,9 +34,9 @@ router.get('/:id', async (req, res) => {
 
 router.get('/:id/:productionTime/:producedParts', async (req, res) => {
     const isCollectionEmpty = await mongoose.connection.db.collection('forms').estimatedDocumentCount()
-    const config = { productionTimeMax, productionTimeMin, producedPartsMax, producedPartsMin } = await Config.findOne({}).lean()
 
     if (isCollectionEmpty) {
+        const config = { productionTimeMax, productionTimeMin, producedPartsMax, producedPartsMin } = await Robots.findOne({}).lean()
         const productionTime = Number(req.params.productionTime)
         const producedParts = Number(req.params.producedParts)
         const oldData = await Form.find({}).lean()

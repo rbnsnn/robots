@@ -4,11 +4,12 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 
 const mongoose = require('mongoose')
-const Config = require('./models/Config');
+const Robots = require('./models/Robots');
 
 const indexRouter = require('./routes/index');
 const wynikiRouter = require('./routes/wyniki')
 const modyfikacjaRouter = require('./routes/modyfikacja')
+const robotyRouter = require('./routes/roboty')
 
 const app = express();
 
@@ -26,16 +27,16 @@ app.engine('hbs', hbs.engine);
 app.set('view engine', 'hbs');
 
 //Mongoose connection
-const server = '127.0.0.1:27017';
+const server = 'localhost:27017';
 const database = 'roboty';
 
 const connectDB = async () => {
     try {
         await mongoose.connect(`mongodb://${server}/${database}`)
-        const isCollectionEmpty = await mongoose.connection.db.collection('configs').estimatedDocumentCount()
+        const isCollectionEmpty = await mongoose.connection.db.collection('robots').estimatedDocumentCount()
         if (!isCollectionEmpty) {
-            const configData = new Config()
-            await configData.save()
+            const robotsData = new Robots()
+            await robotsData.save()
         }
     } catch (err) {
         console.log('Failed to connect MongoDB')
@@ -52,6 +53,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/wyniki', wynikiRouter)
 app.use('/modyfikacja', modyfikacjaRouter)
+app.use('/roboty', robotyRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

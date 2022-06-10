@@ -7,4 +7,4 @@ const dataSchema = mongoose.Schema({
     producedPartsMin: { type: Number, default: 1 },
 })
 
-module.exports = mongoose.model('config', dataSchema)
+module.exports = mongoose.model('robots', dataSchema)

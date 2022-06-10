@@ -1,0 +1,62 @@
+<div class="container container-lg text-center mt-3">
+    <h2>Edycja generowanych wartości</h2>
+    <table class="table mt-3">
+        <thead class="table-dark">
+            <th scope="col">Maksymalny czas produkcji</th>
+            <th scope="col">Minimalny czas produkcji</th>
+            <th scope="col">Maksymalny czas produkcji</th>
+            <th scope="col">Minimalny czas produkcji</th>
+
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <input class="form-control form-control-sm input-group-text production-time-max" type="number"
+                        value="{{config.productionTimeMax}}">
+                </td>
+                <td>
+                    <input class="form-control form-control-sm input-group-text production-time-min" type="number"
+                        value="{{config.productionTimeMin}}">
+                </td>
+                <td>
+                    <input class="form-control form-control-sm input-group-text produced-parts-max" type="number"
+                        value="{{config.producedPartsMax}}">
+                </td>
+                <td>
+                    <input class="form-control form-control-sm input-group-text produced-parts-min" type="number"
+                        value="{{config.producedPartsMin}}">
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" class="btn btn-primary edit-config-button">Edytuj</button>
+    {{#if edited}}
+    <div class="d-flex justify-content-center text-center mb-5">
+        <div class="error-template w-50">
+            <h1 class="text-success">Pomyślnie edytowano!</h1>
+        </div>
+    </div>
+    {{/if}}
+    {{#if noChanges}}
+    <div class="d-flex justify-content-center text-center mb-5">
+        <div class="error-template w-50">
+            <h1 class="text-warning">Nie zmieniono danych!</h1>
+        </div>
+    </div>
+    {{/if}}
+    {{#if editError}}
+    <div class="d-flex justify-content-center text-center mb-5">
+        <div class="error-template w-50">
+            <h1 class="text-danger">Wartość minimalna nie może być większa od maksymalnej!</h1>
+        </div>
+    </div>
+    {{/if}}
+    {{#if valueError}}
+    <div class="d-flex justify-content-center text-center mb-5">
+        <div class="error-template w-50">
+            <h1 class="text-danger">Wartości nie mogą być ujemne lub równe zeru!</h1>
+        </div>
+    </div>
+    {{/if}}
+</div>
+<script src="http://localhost:3000/javascripts/robots.js"></script>
