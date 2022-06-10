@@ -1,7 +1,7 @@
 <form action="/wyniki/generuj" method="post">
     <div class="row d-flex justify-content-center mx-auto text-center mt-5 mb-5 w-50">
         <div class="col-md-12">
-            <button class="btn btn-primary btn-lg" name="foo" value="upvote">Generuj</button>
+            <button class="btn btn-primary btn-lg" name="generate-button">Generuj</button>
         </div>
         <input type="number" id="amount" name="amount" class="form-control w-25 mt-3" placeholder="Liczba rekordów">
     </div>
@@ -42,7 +42,6 @@
         <tbody>
             {{#each data}}
             <tr>
-
                 <th scope="row" class="robot-id">{{this.id}}</th>
                 <td class="production-time">{{this.productionTime}}</td>
                 <td class="produced-parts">{{this.producedParts}}</td>
@@ -55,9 +54,17 @@
 {{/if}}
 
 {{#each mostEffective}}
-{{this.id}}
-{{/each}}
-<div>
-    <canvas id="pieChart" style="margin: 20px auto; width:100%; max-width:600px"></canvas>
-    <canvas id="barChart" style="margin: 40px auto; width:100%; max-width:600px"></canvas>
+<div class="container container-lg text-center mt-5 mb-5">
+    <h2>Najbardziej efektywny jest robot o <b>ID:{{this.id}}</b></h1>
 </div>
+{{/each}}
+<div class="row container container-lg mx-auto">
+    <div class="col-lg-6">
+        <canvas id="pieChart"></canvas>
+    </div>
+    <div class="col-lg-6">
+        <canvas id="barChart"></canvas>
+    </div>
+</div>
+<script src="http://localhost:3000/javascripts/sort.js"></script>
+<script src="http://localhost:3000/javascripts/chart.js"></script>

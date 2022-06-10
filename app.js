@@ -8,6 +8,7 @@ const Config = require('./models/Config');
 
 const indexRouter = require('./routes/index');
 const wynikiRouter = require('./routes/wyniki')
+const modyfikacjaRouter = require('./routes/modyfikacja')
 
 const app = express();
 
@@ -50,6 +51,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/wyniki', wynikiRouter)
+app.use('/modyfikacja', modyfikacjaRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

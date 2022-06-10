@@ -13,7 +13,8 @@ $(document).ready(function () {
                 "previous": "Poprzednia"
             },
             "search": "Wyszukaj:",
-        }
+        },
+        "bLengthChange": false
     });
     $('.dataTables_length').addClass('bs-select');
 }); 
