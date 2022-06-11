@@ -44,7 +44,6 @@ router.get('/:id/:productionTime/:producedParts', async (req, res) => {
         const elementToCompare = await Form.findOne({ id: req.params.id }).lean()
 
         if (productionTime > productionTimeMax || productionTime < productionTimeMin || producedParts > producedPartsMax || producedParts < producedPartsMin) {
-
             res.render('layouts/modyfikacja', { layout: 'index', data: oldData, selectedElement, config, editError: true })
         } else if (elementToCompare.productionTime === productionTime && elementToCompare.producedParts === producedParts) {
             res.render('layouts/modyfikacja', { layout: 'index', data: oldData, selectedElement, config, noChanges: true })

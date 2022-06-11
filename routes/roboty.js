@@ -26,7 +26,7 @@ router.get('/:productionTimeMax/:productionTimeMin/:producedPartsMax/:producedPa
     }
     if (productionTimeMax === oldConfig.productionTimeMax && productionTimeMin === oldConfig.productionTimeMin && producedPartsMax === oldConfig.producedPartsMax && producedPartsMin === oldConfig.producedPartsMin) {
         res.render('layouts/roboty', { layout: 'index', config: oldConfig, noChanges: true })
-    } else if (productionTimeMin > productionTimeMax || producedPartsMin > producedPartsMax) {
+    } else if (productionTimeMin >= productionTimeMax || producedPartsMin >= producedPartsMax) {
         res.render('layouts/roboty', { layout: 'index', config: oldConfig, editError: true })
     } else if (productionTimeMax <= 0 || productionTimeMin <= 0 || producedPartsMax <= 0 || producedPartsMin <= 0) {
         res.render('layouts/roboty', { layout: 'index', config: oldConfig, valueError: true })
