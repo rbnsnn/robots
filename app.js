@@ -10,6 +10,7 @@ const indexRouter = require('./routes/index');
 const wynikiRouter = require('./routes/wyniki')
 const modyfikacjaRouter = require('./routes/modyfikacja')
 const robotyRouter = require('./routes/roboty')
+const opiniaRouter = require('./routes/opinia')
 
 const app = express();
 
@@ -54,6 +55,7 @@ app.use('/', indexRouter);
 app.use('/wyniki', wynikiRouter)
 app.use('/modyfikacja', modyfikacjaRouter)
 app.use('/roboty', robotyRouter)
+app.use('/opinia', opiniaRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
