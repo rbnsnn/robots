@@ -29,7 +29,7 @@ app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs')
 
 //Połączenie z bazą danych
-const server = 'localhost:27017'
+const server = '127.0.0.1:27017'
 const database = 'roboty'
 
 const connectDB = async () => {
