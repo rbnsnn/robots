@@ -1,8 +1,10 @@
+//Routing dla strony głównej
+
 const express = require('express');
+const indexController = require('../controllers/indexController')
+
 const router = express.Router();
 
-router.get('/', (req, res) => {
-    res.render('layouts/main', { layout: 'index' });
-});
+router.get('/', indexController);
 
 module.exports = router;

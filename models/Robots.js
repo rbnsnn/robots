@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 
+//Schema z konfiguracją generowania robotów i z wartościami domyślnymi
 const dataSchema = mongoose.Schema({
     productionTimeMax: { type: Number, default: 100 },
     productionTimeMin: { type: Number, default: 1 },

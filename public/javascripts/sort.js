@@ -1,4 +1,7 @@
-$(document).ready(function () {
+//Sortowanie
+
+//Bibliotekla DataTable wykorzystująca jQuery do sortowania elementów
+$(document).ready(() => {
     $('.table').DataTable({
         "language": {
             "lengthMenu": "Wyświetl _MENU_ pozycji na stronie",

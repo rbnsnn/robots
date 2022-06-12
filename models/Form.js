@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 
+//Schema dla pojedynczego robota
 const dataSchema = mongoose.Schema({
     id: { type: Number },
     productionTime: { type: Number },
