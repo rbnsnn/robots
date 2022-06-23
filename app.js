@@ -1,6 +1,7 @@
 const express = require('express')
 const createError = require('http-errors')
 const path = require('path')
+require('dotenv').config()
 
 //Zaimportowanie mongoose i modelu Robots
 const mongoose = require('mongoose')
@@ -29,12 +30,11 @@ app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs')
 
 //Połączenie z bazą danych
-const server = '127.0.0.1:27017'
-const database = 'roboty'
+const server = process.env.DATABASE_URI
 
 const connectDB = async () => {
     try {
-        await mongoose.connect(`mongodb://${server}/${database}`)
+        await mongoose.connect(server)
         //Sprawdzenie czy istnieje kolekcja robots, jeżeli nie tworzymy nową z wartościami domyślnymi
         const isCollectionEmpty = await mongoose.connection.db.collection('robots').estimatedDocumentCount()
         if (!isCollectionEmpty) {
